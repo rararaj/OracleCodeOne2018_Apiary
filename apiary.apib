@@ -5,10 +5,41 @@ HOST: http://polls.apiblueprint.org/
 
 Polls is a simple API allowing consumers to view polls and vote in them.
 
+## Single Question [/questions/{question_id}]
+
++ Parametes
+    + question_id: 1 (required, number) - the id of the question
+    
+### View a single question [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "question": "Favourite programming language?",
+                "published_at": "2015-08-05T08:40:51.620Z",
+                "choices": [
+                    {
+                        "choice": "Swift",
+                        "votes": 2048
+                    }, {
+                        "choice": "Python",
+                        "votes": 1024
+                    }, {
+                        "choice": "Objective-C",
+                        "votes": 512
+                    }, {
+                        "choice": "Ruby",
+                        "votes": 256
+                    }
+                ]
+            }
+        ]
+
 ## Questions Collection [/questions{?page}]
 
-+ Parameter
-        + page: 1 (optional, number) - my page number
++ Parameters
+    + page: 1 (optional, number) - my page number
 
 ### List All Questions [GET]
 
@@ -53,34 +84,6 @@ form of choices.
                 "Ruby"
             ]
         }
-
- + Response 200 (application/json)
-
-    + Headers
-
-            Location: /questions/2
-
-    + Body
-
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
-            }
 
 + Response 201 (application/json)
 
